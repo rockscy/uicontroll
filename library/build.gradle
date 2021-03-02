@@ -1,0 +1,43 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release' // 新增
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 2
+        versionName "1.0.1"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    lintOptions { // 新增
+        abortOnError false
+    }
+}
+
+dependencies {
+    api "androidx.core:core:1.5.0-beta02"
+}
+publish {
+    userOrg = 'rockscy94'
+    groupId = 'com.rock.uicontroll'
+    artifactId = 'uicontroll'
+    publishVersion = '1.0.1'
+    desc = 'system ui controll'
+    website = 'https://github.com/rockscy/uicontroll'
+}
