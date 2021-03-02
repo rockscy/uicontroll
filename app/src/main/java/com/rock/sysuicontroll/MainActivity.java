@@ -3,9 +3,11 @@ package com.rock.sysuicontroll;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import com.rock.uicontroll.SystemUiControll;
@@ -34,8 +36,10 @@ public class MainActivity extends AppCompatActivity {
                 Log.i(TAG, "key baord anim start");
             }
 
+            @SuppressLint("SetTextI18n")
             @Override
             public void onKeyBoardHeightChange(int height) {
+                btnHeight.setText("height: " + height);
                 Log.i(TAG, "key baord height: " + height);
             }
 
@@ -51,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
      * 设置任意view跟随软键盘移动
      */
     private EditText editText;
+    private Button btnHeight;
 
 
     private void initMoveView() {
@@ -58,8 +63,9 @@ public class MainActivity extends AppCompatActivity {
         View container = findViewById(R.id.btn_container);
         RecyclerView recyclerView = findViewById(R.id.recycler);
         recyclerView.setAdapter(new MyAdapter());
+        btnHeight = findViewById(R.id.btn_height);
         //分别设置
-        SystemUiControll.getInstence().setAutoMoveView(recyclerView,container,editText);
+        SystemUiControll.getInstence().setAutoMoveView(recyclerView, container, editText);
         //对根布局进行设置
 //        View rootView = getWindow().getDecorView().getRootView();
 //        SystemUiControll.getInstence().setAutoMoveView(rootView);
