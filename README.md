@@ -8,6 +8,12 @@ android keybaord软键盘解决方案，监听软键盘打开关闭并实时获�
 ## 使用 
 > android studio
    ```groovy
+   allprojects {
+    repositories {
+        maven { url "https://dl.bintray.com/rockscy94/maven/" }
+    }
+}
+
    implementation 'com.rock.uicontroll:uicontroll:1.0.1'
    ```
 
